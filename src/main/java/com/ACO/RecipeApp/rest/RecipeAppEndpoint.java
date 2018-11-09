@@ -13,7 +13,7 @@ import javax.ws.rs.Produces;
 import com.ACO.RecipeApp.repository.RecipeAppRepository;
 import com.ACO.RecipeApp.domain.Recipes;
 
-@Path("/classroom")
+@Path("/user")
 public class RecipeAppEndpoint {
 
 	@Inject

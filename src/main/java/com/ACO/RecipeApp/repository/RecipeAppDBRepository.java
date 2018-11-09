@@ -32,14 +32,14 @@ public class RecipeAppDBRepository implements RecipeAppRepository {
 		return util.getJSONForObject(users);
 	}
 
-	@Override
+	@Transactional(REQUIRED)
 	public String createUser(String user) {
 		Users aUser = util.getObjectForJSON(user, Users.class);
 		manager.merge(aUser);
 		return "{\"message\": \"User sucessfully added\"}";
 	}
 
-	@Override
+	@Transactional(REQUIRED)
 	public String deleteUser(Long userID) {
 		Users userInDB = findUser(userID);
 		if (userInDB != null) {
@@ -48,13 +48,13 @@ public class RecipeAppDBRepository implements RecipeAppRepository {
 		return "{\"message\": \"User sucessfully deleted\"}";
 	}
 
-	@Override
+	
 	public String getUser(Long userID) {
 		Users aUser = manager.find(Users.class, userID);
 		return util.getJSONForObject(aUser);
 	}
 
-	@Override
+	@Transactional(REQUIRED)
 	public String updateUser(Long userID, String user) {
 		Users aUser = util.getObjectForJSON(user, Users.class);
 		Users userInDB = findUser(userID);
