@@ -63,11 +63,11 @@ public class Users {
 		this.lastName = lastName;
 	}
 
-	public List<Recipes> getTrainees() {
+	public List<Recipes> getRecipes() {
 		return recipes;
 	}
 
-	public void setTrainees(List<Recipes> recipes) {
+	public void setRecipes(List<Recipes> recipes) {
 		this.recipes = recipes;
 	}
 
