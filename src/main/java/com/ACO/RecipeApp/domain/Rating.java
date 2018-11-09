@@ -1,10 +1,12 @@
 package com.ACO.RecipeApp.domain;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Entity
 public class Rating {
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,8 +16,9 @@ public class Rating {
 	private Long rating;
 	@Column(length = 255)
 	private String comment;
-	@Column(length = 100)
+	@Column(name = "user_ID")
 	private Long userID;
+	@Column(name = "recipe_ID")
 	private Long recipeID;
 
 	public Long getRatingID() {

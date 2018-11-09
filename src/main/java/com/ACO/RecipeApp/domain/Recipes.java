@@ -1,16 +1,23 @@
 package com.ACO.RecipeApp.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Recipes {
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
+	@Column(name = "recipe_ID")
 	private Long recipeID;
 	@Column(length = 100)
 	private String recipeName;
@@ -22,6 +29,9 @@ public class Recipes {
 	private Boolean vegan;
 	@Column(name = "user_ID")
 	private String userID;
+	@JoinColumn(name = "recipe_ID", referencedColumnName = "recipe_ID")
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Rating> ratings;
 
 	public Long getRecipeID() {
 		return recipeID;
@@ -69,6 +79,14 @@ public class Recipes {
 
 	public void setUserID(String userID) {
 		this.userID = userID;
+	}
+
+	public List<Rating> getRatings() {
+		return ratings;
+	}
+
+	public void setRatings(List<Rating> ratings) {
+		this.ratings = ratings;
 	}
 
 }
